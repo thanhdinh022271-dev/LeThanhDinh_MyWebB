@@ -1,53 +1,111 @@
-<!-- Admin Sidebar Navigation -->
-<aside class="admin-sidebar">
-    <!-- Sidebar Logo -->
-    <div class="sidebar-logo">
-        <h5>
-            <i class="fas fa-layer-group"></i> 
-            <span>Admin</span>
-        </h5>
-    </div>
+<div class="admin-sidebar bg-dark text-white p-3 vh-100" style="width: 280px; overflow-y: auto;">
+    <h4 class="mb-4">
+        <i class="bi bi-speedometer2"></i>
+        Admin Panel
+    </h4>
+    
+    <ul class="nav flex-column">
+        <!-- Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link text-white @if(request()->is('admin') || request()->is('admin/')) active @endif" href="/admin">
+                <i class="bi bi-house-door"></i>
+                Dashboard
+            </a>
+        </li>
 
-    <!-- Sidebar Menu -->
-    <nav class="sidebar-menu">
-        <!-- Main Section -->
-        <div class="sidebar-title">Main</div>
-        <a href="/admin" class="nav-link @if(request()->is('admin') || request()->is('admin/')) active @endif">
-            <i class="fas fa-chart-line"></i>
-            <span>Dashboard</span>
-        </a>
+        <!-- Category Menu (Collapsible) -->
+        <li class="nav-item">
+            <a class="nav-link text-white" data-bs-toggle="collapse" href="#categoryMenu" role="button" aria-expanded="false" aria-controls="categoryMenu">
+                <i class="bi bi-tags"></i>
+                Quản lý danh mục
+                <i class="bi bi-chevron-down float-end"></i>
+            </a>
+            <div class="collapse" id="categoryMenu">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/category">
+                            Danh sách danh mục
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/category/create">
+                            Thêm danh mục
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-        <!-- Content Management Section -->
-        <div class="sidebar-title">Quản lý nội dung</div>
-        <a href="/admin/category" class="nav-link @if(request()->is('admin/category*')) active @endif">
-            <i class="fas fa-folder"></i>
-            <span>Danh mục</span>
-        </a>
-        <a href="/admin/brand" class="nav-link @if(request()->is('admin/brand*')) active @endif">
-            <i class="fas fa-tag"></i>
-            <span>Thương hiệu</span>
-        </a>
-        <a href="/admin/product" class="nav-link @if(request()->is('admin/product*')) active @endif">
-            <i class="fas fa-box"></i>
-            <span>Sản phẩm</span>
-        </a>
-        <a href="/admin/post" class="nav-link @if(request()->is('admin/post*')) active @endif">
-            <i class="fas fa-file-alt"></i>
-            <span>Bài viết</span>
-        </a>
+        <!-- Brand Menu (Collapsible) -->
+        <li class="nav-item">
+            <a class="nav-link text-white" data-bs-toggle="collapse" href="#brandMenu" role="button" aria-expanded="false" aria-controls="brandMenu">
+                <i class="bi bi-bookmark"></i>
+                Quản lý thương hiệu
+                <i class="bi bi-chevron-down float-end"></i>
+            </a>
+            <div class="collapse" id="brandMenu">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/brand">
+                            Danh sách thương hiệu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/brand/create">
+                            Thêm thương hiệu
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-        <!-- User Management Section -->
-        <div class="sidebar-title">Quản lý người dùng</div>
-        <a href="/admin/user" class="nav-link @if(request()->is('admin/user*')) active @endif">
-            <i class="fas fa-users"></i>
-            <span>Người dùng</span>
-        </a>
+        <!-- Product Menu (Collapsible) -->
+        <li class="nav-item">
+            <a class="nav-link text-white" data-bs-toggle="collapse" href="#productMenu" role="button" aria-expanded="false" aria-controls="productMenu">
+                <i class="bi bi-box-seam"></i>
+                Quản lý sản phẩm
+                <i class="bi bi-chevron-down float-end"></i>
+            </a>
+            <div class="collapse" id="productMenu">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/product">
+                            Danh sách sản phẩm
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/product/create">
+                            Thêm sản phẩm
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-        <!-- System Section -->
-        <div class="sidebar-title">Hệ thống</div>
-        <a href="/" class="nav-link">
-            <i class="fas fa-home"></i>
-            <span>Trang chủ</span>
-        </a>
-    </nav>
-</aside>
+        <!-- Post Menu -->
+        <li class="nav-item">
+            <a class="nav-link text-white @if(request()->is('admin/post*')) active @endif" href="/admin/post">
+                <i class="bi bi-file-earmark-text"></i>
+                Bài viết
+            </a>
+        </li>
+
+        <!-- User Menu -->
+        <li class="nav-item">
+            <a class="nav-link text-white @if(request()->is('admin/user*')) active @endif" href="/admin/user">
+                <i class="bi bi-people"></i>
+                Người dùng
+            </a>
+        </li>
+
+        <hr class="bg-white">
+
+        <!-- Back to Home -->
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/">
+                <i class="bi bi-house"></i>
+                Trang chủ
+            </a>
+        </li>
+    </ul>
+</div>

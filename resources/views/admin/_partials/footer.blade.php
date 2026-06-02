@@ -1,11 +1,3 @@
-<!-- Admin Footer -->
-<footer class="admin-footer">
-    <div class="footer-content">
-        <div class="footer-left">
-            <p>&copy; {{ date('Y') }} Admin Panel - Hệ thống quản lý nội dung</p>
-        </div>
-        <div class="footer-right">
-            <p>Development for Learning Purpose - Lab 03 | <a href="/" target="_blank">Trang chủ</a></p>
-        </div>
-    </div>
+<footer class="bg-dark text-white text-center p-3 admin-footer">
+    <small>&copy; {{ date('Y') }} Admin Panel - Development for Learning Purpose (Lab 04) | <a href="/" class="text-white-50 text-decoration-none">Trang chủ</a></small>
 </footer>

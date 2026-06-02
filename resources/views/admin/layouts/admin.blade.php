@@ -8,8 +8,8 @@
     <!-- Bootstrap 5.3 CDN CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Font Awesome CDN for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     
     <style>
         :root {
@@ -32,59 +32,39 @@
 
         /* Sidebar Styles */
         .admin-sidebar {
-            width: 280px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0;
             position: fixed;
             height: 100vh;
-            overflow-y: auto;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
         }
 
-        .sidebar-logo {
-            padding: 25px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
-
-        .sidebar-logo h5 {
-            margin: 0;
+        .admin-sidebar h4 {
             font-weight: 600;
-            font-size: 20px;
+            letter-spacing: 0.5px;
         }
 
-        .sidebar-menu {
-            padding: 20px 0;
-        }
-
-        .sidebar-menu .nav-link {
+        .admin-sidebar .nav-link {
             color: rgba(255, 255, 255, 0.8);
-            padding: 12px 20px;
             transition: all 0.3s ease;
             border-left: 3px solid transparent;
+            padding-left: 20px;
         }
 
-        .sidebar-menu .nav-link:hover,
-        .sidebar-menu .nav-link.active {
+        .admin-sidebar .nav-link:hover,
+        .admin-sidebar .nav-link.active {
             color: white;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.15);
             border-left-color: #ffc107;
         }
 
-        .sidebar-menu .nav-link i {
-            margin-right: 10px;
+        .admin-sidebar .nav-link i {
+            margin-right: 12px;
             width: 20px;
             text-align: center;
         }
 
-        .sidebar-title {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 12px;
-            text-transform: uppercase;
-            padding: 15px 20px 10px 20px;
-            font-weight: 600;
-            letter-spacing: 1px;
+        .admin-sidebar .collapse .nav-link {
+            font-size: 14px;
+            padding-left: 30px;
         }
 
         /* Main Content Area */
