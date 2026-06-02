@@ -22,19 +22,14 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f6fa;
         }
 
-        .admin-wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Sidebar Styles */
         .admin-sidebar {
             position: fixed;
             height: 100vh;
+            width: 16.666666%; /* col-md-2 width */
             box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
         }
 
         .admin-sidebar h4 {
@@ -67,68 +62,11 @@
             padding-left: 30px;
         }
 
-        /* Main Content Area */
-        .admin-main {
-            margin-left: 280px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header Styles */
+        /* Main Content Area - Handled by Bootstrap grid */
         .admin-header {
             background: white;
             padding: 20px 30px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .header-title h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 15px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .user-profile:hover {
-            background: #e9ecef;
-        }
-
-        .user-profile.dropdown-toggle::after {
-            margin-left: auto;
-        }
-
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
         }
 
         /* Content Area */
@@ -392,22 +330,30 @@
     @yield('styles')
 </head>
 <body>
-    <div class="admin-wrapper">
-        <!-- Sidebar Include -->
-        @include('admin._partials.sidebar')
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <!-- SIDEBAR -->
+            <div class="col-md-2 bg-dark text-white p-0">
+                @include('admin._partials.sidebar')
+            </div>
 
-        <!-- Main Content -->
-        <div class="admin-main">
-            <!-- Header Include -->
-            @include('admin._partials.header')
+            <!-- RIGHT CONTENT -->
+            <div class="col-md-10 d-flex flex-column p-0">
+                <!-- HEADER -->
+                <div class="border-bottom bg-white">
+                    @include('admin._partials.header')
+                </div>
 
-            <!-- Content -->
-            <main class="admin-content">
-                @yield('content')
-            </main>
+                <!-- MAIN CONTENT -->
+                <main class="flex-grow-1 bg-light p-3">
+                    @yield('content')
+                </main>
 
-            <!-- Footer Include -->
-            @include('admin._partials.footer')
+                <!-- FOOTER -->
+                <footer class="bg-dark text-white text-center py-2">
+                    @include('admin._partials.footer')
+                </footer>
+            </div>
         </div>
     </div>
 
