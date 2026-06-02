@@ -24,6 +24,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard.view');
     
     Route::resource('category', CategoryController::class);
     Route::resource('brand', BrandController::class);
