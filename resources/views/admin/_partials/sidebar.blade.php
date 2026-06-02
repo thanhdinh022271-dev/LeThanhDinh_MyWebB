@@ -7,7 +7,7 @@
     <ul class="nav flex-column">
         <!-- Dashboard -->
         <li class="nav-item">
-            <a class="nav-link text-white @if(request()->is('admin') || request()->is('admin/')) active @endif" href="/admin">
+            <a class="nav-link text-white @if(request()->routeIs('admin.home') || request()->routeIs('admin.index')) active @endif" href="{{ route('admin.home') }}">
                 <i class="bi bi-house-door"></i>
                 Dashboard
             </a>
@@ -23,12 +23,12 @@
             <div class="collapse" id="categoryMenu">
                 <ul class="nav flex-column ms-3">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/category">
+                        <a class="nav-link text-white" href="{{ route('category.index') }}">
                             Danh sách danh mục
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/category/create">
+                        <a class="nav-link text-white" href="{{ route('category.create') }}">
                             Thêm danh mục
                         </a>
                     </li>
@@ -46,12 +46,12 @@
             <div class="collapse" id="brandMenu">
                 <ul class="nav flex-column ms-3">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/brand">
+                        <a class="nav-link text-white" href="{{ route('brand.index') }}">
                             Danh sách thương hiệu
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/brand/create">
+                        <a class="nav-link text-white" href="{{ route('brand.create') }}">
                             Thêm thương hiệu
                         </a>
                     </li>
@@ -69,12 +69,12 @@
             <div class="collapse" id="productMenu">
                 <ul class="nav flex-column ms-3">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/product">
+                        <a class="nav-link text-white" href="{{ route('product.index') }}">
                             Danh sách sản phẩm
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/admin/product/create">
+                        <a class="nav-link text-white" href="{{ route('product.create') }}">
                             Thêm sản phẩm
                         </a>
                     </li>
@@ -84,7 +84,7 @@
 
         <!-- Post Menu -->
         <li class="nav-item">
-            <a class="nav-link text-white @if(request()->is('admin/post*')) active @endif" href="/admin/post">
+            <a class="nav-link text-white @if(request()->routeIs('post.*')) active @endif" href="{{ route('post.index') }}">
                 <i class="bi bi-file-earmark-text"></i>
                 Bài viết
             </a>
@@ -92,7 +92,7 @@
 
         <!-- User Menu -->
         <li class="nav-item">
-            <a class="nav-link text-white @if(request()->is('admin/user*')) active @endif" href="/admin/user">
+            <a class="nav-link text-white @if(request()->routeIs('user.*')) active @endif" href="{{ route('user.index') }}">
                 <i class="bi bi-people"></i>
                 Người dùng
             </a>

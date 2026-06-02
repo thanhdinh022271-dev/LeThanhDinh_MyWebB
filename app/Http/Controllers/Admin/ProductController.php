@@ -62,4 +62,22 @@ class ProductController extends Controller
     {
         return "Product Destroy - Xóa sản phẩm ID: " . $id;
     }
+
+    /**
+     * Test 1 - Redirect sử dụng route name
+     * Để kiểm tra: /admin/test1
+     */
+    public function test1()
+    {
+        return redirect()->route('admin.home');
+    }
+
+    /**
+     * Test 2 - Redirect sử dụng hardcode URL
+     * Để kiểm tra: /admin/test2
+     */
+    public function test2()
+    {
+        return redirect('/admin/dashboard');
+    }
 }

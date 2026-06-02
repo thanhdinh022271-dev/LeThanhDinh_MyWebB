@@ -8,7 +8,7 @@
 <div class="page-header">
     <h2>Danh mục sản phẩm</h2>
     <div class="btn-group-action">
-        <a href="/admin/category/create" class="btn btn-primary">
+        <a href="{{ route('category.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Thêm danh mục
         </a>
     </div>
@@ -38,10 +38,10 @@
                         <td>Các sản phẩm điện tử</td>
                         <td>2026-06-02</td>
                         <td>
-                            <a href="/admin/category/1/edit" class="btn btn-sm btn-warning">
-                                <i class="fas fa-edit"></i> Sửa
+                            <a href="{{ route('category.edit', 1) }}" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i> 
                             </a>
-                            <form action="/admin/category/1" method="POST" style="display: inline;">
+                            <form action="{{ route('category.destroy', 1) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
@@ -55,7 +55,7 @@
         @else
             <div class="alert alert-info">
                 <i class="fas fa-info-circle"></i> Chưa có danh mục nào. 
-                <a href="/admin/category/create" class="alert-link">Thêm danh mục mới</a>
+                <a href="{{ route('category.create') }}" class="alert-link">Thêm danh mục mới</a>
             </div>
         @endif
     </div>

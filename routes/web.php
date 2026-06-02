@@ -21,17 +21,24 @@ Route::get('/demo6/{param1}/{param2}', [DemoController::class, 'index6']);
 
 // Admin Resource Routes
 Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
-
+    // Dashboard - Route name: admin.home
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    })->name('admin.dashboard.view');
+    })->name('admin.home');
+
+    // Alias cho dashboard
+    Route::get('/', function () {
+        return redirect()->route('admin.home');
+    })->name('admin.index');
     
+    // Resource Routes
     Route::resource('category', CategoryController::class);
     Route::resource('brand', BrandController::class);
     Route::resource('product', ProductController::class);
     Route::resource('user', UserController::class);
     Route::resource('post', PostController::class);
+
+    // Test Routes - Để kiểm tra redirect
+    Route::get('/test1', [ProductController::class, 'test1']);
+    Route::get('/test2', [ProductController::class, 'test2']);
 });

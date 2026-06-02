@@ -25,7 +25,7 @@
                     </div>
                     <i class="bi bi-tags" style="font-size: 2rem; color: #0066cc;"></i>
                 </div>
-                <small><a href="/admin/category">Xem chi tiết →</a></small>
+                <small><a href="{{ route('category.index') }}">Xem chi tiết →</a></small>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
                     </div>
                     <i class="bi bi-bookmark" style="font-size: 2rem; color: #28a745;"></i>
                 </div>
-                <small><a href="/admin/brand">Xem chi tiết →</a></small>
+                <small><a href="{{ route('brand.index') }}">Xem chi tiết →</a></small>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                     </div>
                     <i class="bi bi-box-seam" style="font-size: 2rem; color: #ffc107;"></i>
                 </div>
-                <small><a href="/admin/product">Xem chi tiết →</a></small>
+                <small><a href="{{ route('product.index') }}">Xem chi tiết →</a></small>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
                     </div>
                     <i class="bi bi-file-earmark-text" style="font-size: 2rem; color: #dc3545;"></i>
                 </div>
-                <small><a href="/admin/post">Xem chi tiết →</a></small>
+                <small><a href="{{ route('post.index') }}">Xem chi tiết →</a></small>
             </div>
         </div>
     </div>
@@ -137,27 +137,27 @@
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <a href="/admin/category" class="text-decoration-none">
+                        <a href="{{ route('category.index') }}" class="text-decoration-none">
                             <i class="bi bi-tags"></i> Quản lý Danh mục
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="/admin/brand" class="text-decoration-none">
+                        <a href="{{ route('brand.index') }}" class="text-decoration-none">
                             <i class="bi bi-bookmark"></i> Quản lý Thương hiệu
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="/admin/product" class="text-decoration-none">
+                        <a href="{{ route('product.index') }}" class="text-decoration-none">
                             <i class="bi bi-box-seam"></i> Quản lý Sản phẩm
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="/admin/post" class="text-decoration-none">
+                        <a href="{{ route('post.index') }}" class="text-decoration-none">
                             <i class="bi bi-file-earmark-text"></i> Quản lý Bài viết
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="/admin/user" class="text-decoration-none">
+                        <a href="{{ route('user.index') }}" class="text-decoration-none">
                             <i class="bi bi-people"></i> Quản lý Người dùng
                         </a>
                     </li>

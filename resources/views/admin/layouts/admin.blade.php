@@ -346,6 +346,7 @@
 
                 <!-- MAIN CONTENT -->
                 <main class="flex-grow-1 bg-light p-3">
+                    @yield('breadcrumb')
                     @yield('content')
                 </main>
 
