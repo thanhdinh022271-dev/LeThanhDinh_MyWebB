@@ -11,8 +11,7 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return "Category Index - Danh sách loại sản phẩm";
+    {\n        return view('admin.category.index');
     }
 
     /**

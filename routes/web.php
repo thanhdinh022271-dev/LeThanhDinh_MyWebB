@@ -21,6 +21,10 @@ Route::get('/demo6/{param1}/{param2}', [DemoController::class, 'index6']);
 
 // Admin Resource Routes
 Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+    
     Route::resource('category', CategoryController::class);
     Route::resource('brand', BrandController::class);
     Route::resource('product', ProductController::class);
