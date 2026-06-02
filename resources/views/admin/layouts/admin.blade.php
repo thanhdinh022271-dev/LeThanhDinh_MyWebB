@@ -128,10 +128,15 @@
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: none;
         }
 
         .user-profile:hover {
             background: #e9ecef;
+        }
+
+        .user-profile.dropdown-toggle::after {
+            margin-left: auto;
         }
 
         .user-avatar {
@@ -265,10 +270,30 @@
         .admin-footer {
             background: white;
             padding: 20px 30px;
-            text-align: center;
             border-top: 1px solid #e9ecef;
             color: #6c757d;
             font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left, .footer-right {
+            margin: 0;
+        }
+
+        .footer-right a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer-right a:hover {
+            text-decoration: underline;
         }
 
         /* Responsive Design */
@@ -388,78 +413,21 @@
 </head>
 <body>
     <div class="admin-wrapper">
-        <!-- Sidebar -->
-        <aside class="admin-sidebar">
-            <div class="sidebar-logo">
-                <h5><i class="fas fa-layer-group"></i> Admin</h5>
-            </div>
-
-            <nav class="sidebar-menu">
-                <div class="sidebar-title">Main</div>
-                <a href="/admin" class="nav-link @if(request()->is('admin')) active @endif">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Dashboard</span>
-                </a>
-
-                <div class="sidebar-title">Quản lý nội dung</div>
-                <a href="/admin/category" class="nav-link @if(request()->is('admin/category*')) active @endif">
-                    <i class="fas fa-folder"></i>
-                    <span>Danh mục</span>
-                </a>
-                <a href="/admin/brand" class="nav-link @if(request()->is('admin/brand*')) active @endif">
-                    <i class="fas fa-tag"></i>
-                    <span>Thương hiệu</span>
-                </a>
-                <a href="/admin/product" class="nav-link @if(request()->is('admin/product*')) active @endif">
-                    <i class="fas fa-box"></i>
-                    <span>Sản phẩm</span>
-                </a>
-                <a href="/admin/post" class="nav-link @if(request()->is('admin/post*')) active @endif">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Bài viết</span>
-                </a>
-
-                <div class="sidebar-title">Quản lý người dùng</div>
-                <a href="/admin/user" class="nav-link @if(request()->is('admin/user*')) active @endif">
-                    <i class="fas fa-users"></i>
-                    <span>Người dùng</span>
-                </a>
-
-                <div class="sidebar-title">Hệ thống</div>
-                <a href="/" class="nav-link">
-                    <i class="fas fa-home"></i>
-                    <span>Trang chủ</span>
-                </a>
-            </nav>
-        </aside>
+        <!-- Sidebar Include -->
+        @include('admin._partials.sidebar')
 
         <!-- Main Content -->
         <div class="admin-main">
-            <!-- Header -->
-            <header class="admin-header">
-                <div class="header-title">
-                    <h1>@yield('page_title', 'Dashboard')</h1>
-                </div>
-                <div class="header-actions">
-                    <button class="btn btn-light" title="Notifications">
-                        <i class="fas fa-bell"></i>
-                    </button>
-                    <div class="user-profile">
-                        <div class="user-avatar">A</div>
-                        <span>Admin</span>
-                    </div>
-                </div>
-            </header>
+            <!-- Header Include -->
+            @include('admin._partials.header')
 
             <!-- Content -->
             <main class="admin-content">
                 @yield('content')
             </main>
 
-            <!-- Footer -->
-            <footer class="admin-footer">
-                <p>&copy; {{ date('Y') }} Admin Panel. Hệ thống quản lý nội dung. | Development for Learning Purpose - Lab 03</p>
-            </footer>
+            <!-- Footer Include -->
+            @include('admin._partials.footer')
         </div>
     </div>
 
