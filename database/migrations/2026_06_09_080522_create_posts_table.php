@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('content');
             $table->string('image', 200)->nullable();
             $table->tinyInteger('status')->default(1);
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')
