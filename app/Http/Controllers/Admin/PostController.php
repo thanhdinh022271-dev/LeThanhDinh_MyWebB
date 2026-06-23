@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -12,7 +14,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        return "Post Index - Danh sách bài viết";
+        $limit = request()->query('limit', 10);
+
+        $list = Post::select('id','title','slug','status','user_id','created_at')
+            ->with(['user' => function($q) { $q->select('id','fullname'); }])
+            ->orderBy('id', 'desc')
+            ->paginate((int)$limit);
+
+        return view('admin.posts.index', compact('list'));
     }
 
     /**

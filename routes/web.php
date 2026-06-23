@@ -20,11 +20,11 @@ Route::get('/demo5/{id?}', [DemoController::class, 'index5']);
 Route::get('/demo6/{param1}/{param2}', [DemoController::class, 'index6']);
 
 // Admin Resource Routes
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     // Dashboard - Route name: admin.home
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    })->name('admin.home');
+    })->name('home');
 
     // Alias cho dashboard
     Route::get('/', function () {
@@ -32,7 +32,7 @@ Route::prefix('admin')->group(function () {
     })->name('admin.index');
     
     // Resource Routes
-    Route::resource('category', CategoryController::class);
+    Route::resource('categories', CategoryController::class);
     Route::resource('brand', BrandController::class);
     Route::resource('product', ProductController::class);
     Route::resource('user', UserController::class);

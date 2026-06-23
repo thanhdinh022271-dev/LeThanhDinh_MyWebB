@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container" style="padding:2rem;">
-        <h1>Demo Index</h1>
+        <h1>Le Thanh Dinh</h1>
 
         @if(!empty($items) && count($items))
             <ul>

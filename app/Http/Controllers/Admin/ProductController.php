@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return "Product Index - Danh sách sản phẩm";
+        return view('admin.products.index');
     }
 
     /**
@@ -20,7 +23,15 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return "Product Create - Form thêm sản phẩm";
+        $categories = Category::select('cateid', 'catename')
+            ->orderBy('catename')
+            ->get();
+
+        $brands = Brand::select('id', 'brandname')
+            ->orderBy('brandname')
+            ->get();
+
+        return view('admin.products.create', compact('categories', 'brands'));
     }
 
     /**
@@ -28,7 +39,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        return "Product Store - Lưu sản phẩm mới";
+        $validated = $request->validate([
+            'productname' => 'required|string|max:150',
+            'slug' => 'required|string|max:180|unique:products,slug',
+            'price' => 'required|numeric|min:0',
+            'pricediscount' => 'nullable|numeric|min:0',
+            'description' => 'nullable|string',
+            'status' => 'required|in:0,1',
+            'brandid' => 'nullable|integer|exists:brands,id',
+            'cateid' => 'required|integer|exists:categories,cateid',
+        ]);
+
+        try {
+            Product::create($validated);
+
+            return redirect()->route('admin.product.index')
+                ->with('success', 'Thêm sản phẩm thành công.');
+        } catch (\Exception $exception) {
+            return back()
+                ->withInput()
+                ->with('error', 'Lỗi khi thêm sản phẩm: ' . $exception->getMessage());
+        }
     }
 
     /**
@@ -44,7 +75,17 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        return "Product Edit - Form sửa sản phẩm ID: " . $id;
+        $product = Product::findOrFail($id);
+
+        $categories = Category::select('cateid', 'catename')
+            ->orderBy('catename')
+            ->get();
+
+        $brands = Brand::select('id', 'brandname')
+            ->orderBy('brandname')
+            ->get();
+
+        return view('admin.products.edit', compact('product', 'categories', 'brands'));
     }
 
     /**
@@ -52,7 +93,29 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "Product Update - Cập nhật sản phẩm ID: " . $id;
+        $product = Product::findOrFail($id);
+
+        $validated = $request->validate([
+            'productname' => 'required|string|max:150',
+            'slug' => 'required|string|max:180|unique:products,slug,' . $product->id,
+            'price' => 'required|numeric|min:0',
+            'pricediscount' => 'nullable|numeric|min:0',
+            'description' => 'nullable|string',
+            'status' => 'required|in:0,1',
+            'brandid' => 'nullable|integer|exists:brands,id',
+            'cateid' => 'required|integer|exists:categories,cateid',
+        ]);
+
+        try {
+            $product->update($validated);
+
+            return redirect()->route('admin.product.index')
+                ->with('success', 'Cập nhật sản phẩm thành công.');
+        } catch (\Exception $exception) {
+            return back()
+                ->withInput()
+                ->with('error', 'Lỗi khi cập nhật sản phẩm: ' . $exception->getMessage());
+        }
     }
 
     /**

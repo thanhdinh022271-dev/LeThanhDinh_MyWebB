@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -10,8 +11,16 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {\n        return view('admin.category.index');
+    public function index(Request $request)
+    {
+        $limit = (int) $request->query('limit', 10);
+        if ($limit <= 0) {
+            $limit = 10;
+        }
+
+        $list = Category::paginate($limit);
+
+        return view('admin.categories.index', compact('list'));
     }
 
     /**
@@ -19,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return "Category Create - Form thêm loại sản phẩm";
+        return view('admin.categories.create');
     }
 
     /**
@@ -27,7 +36,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return "Category Store - Lưu loại sản phẩm mới";
+        $data = $request->validate([
+            'catename' => 'required|string|max:100',
+            'slug' => 'required|string|max:150',
+            'status' => 'nullable|in:0,1',
+            'sort_order' => 'nullable|integer',
+            'description' => 'nullable|string',
+        ]);
+
+        $data['status'] = $data['status'] ?? 1;
+
+        Category::create($data);
+
+        return redirect()->route('admin.categories.index')->with('success', 'Đã thêm danh mục');
     }
 
     /**
